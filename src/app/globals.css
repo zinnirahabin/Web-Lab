@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #087A58;
+  --primary-strong: #066748;
+  --primary-ink: #065F43;
+  --primary-soft: #EEFAF5;
+  --primary-soft-2: #DCF3EA;
+  --primary-border: #B9E6D6;
+  --primary-bright: #34D399;
+  --secondary: #0D1117;
+  --surface: #FFFFFF;
+  --surface-2: #FBFCFD;
+  --surface-muted: #F7F8FA;
+  --surface-sunken: #F2F4F7;
+  --on-surface: #363C47;
+  --on-surface-strong: #0D1117;
+  --on-surface-variant: #5B6472;
+  --on-surface-muted: #697382;
+  --outline: #E7EAEF;
+  --outline-strong: #D6DBE3;
+  --error: #D61F26;
+}
+
+::selection {
+  background-color: var(--primary-soft-2);
+  color: var(--primary-ink);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FFFFFF;
+  color: #363C47;
+  font-family: var(--font-plus-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tabular figures for numbers */
+.font-tnum {
+  font-feature-settings: "tnum" 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Pretty paragraph wrapping */
+p {
+  text-wrap: pretty;
+}
+
+/* Balanced headline wrapping */
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+
+/* Faint scanline texture for the headline card */
+.scanline-pattern {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+}
+
+/* Ticker marquee animation */
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 46s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-ticker {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* Print Styles for "Download/Print the checklist" */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #0D1117 !important;
+    font-size: 12pt;
+  }
+  header, #ticker, .no-print, button {
+    display: none !important;
+  }
+  .section-dark {
+    background: #F7F8FA !important;
+    color: #0D1117 !important;
+  }
+  .section-dark * {
+    color: #0D1117 !important;
+  }
+  .card, .card-nested {
+    box-shadow: none !important;
+    border: 1px solid #D6DBE3 !important;
+    page-break-inside: avoid;
+  }
+  a {
+    text-decoration: none !important;
+    color: #0D1117 !important;
+  }
+}
