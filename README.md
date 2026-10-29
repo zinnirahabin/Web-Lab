@@ -1,4 +1,4 @@
-# Claim Ready
+# Web-Lab — Claim Ready
 
 A calm, factual, editorial web application for anyone preparing or disputing a consumer warranty claim. Built with Next.js 14, TypeScript, and Tailwind CSS following the **Sorry Bravia: Emerald Editorial** design system.
 
